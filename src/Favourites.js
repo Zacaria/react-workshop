@@ -41,7 +41,7 @@ const enhance = compose(
     },
     addListEntry: props => event => {
       event.preventDefault();
-      props.setFavourites([...props.favourites, props.favouriteText]);
+      props.setFavourites([props.favouriteText, ...props.favourites]);
       props.setFavouriteText('');
     },
     updateName: props => event => {
