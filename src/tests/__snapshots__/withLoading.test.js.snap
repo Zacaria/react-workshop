@@ -9,8 +9,7 @@ exports[`test should pass down props e.g. style to the child component 1`] = `
 
 exports[`test should render loading if the prop loading is set to true 1`] = `
 <div>
-  Loading 
-  …
+  Loading …
 </div>
 `;
 
