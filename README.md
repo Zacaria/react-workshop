@@ -6,18 +6,18 @@ This lab is split into three parts which can be found in these branches:
 
 # Part 1
 
-Your task in this lab is to create to make your App component functional by using higher order components from recompose. You need fill in the `compose` section of the `src/Favourites.js` component. The goal is to have a list app that allows you to change the image and name of the list as well as add new entries.
+Your task in this lab is to create to make your Planets component load planets from the Star Wars universe. In this case the `compose` function has already one higher order component `withFetch` to fetch the data. Unfortunately it breaks since we don't handle the loading state yet. Since we are going to re-use loading screens many times we want to create a higher order component `withLoading`.
 
-The component is used in `index.js` with specific props. Do not change them, but rather map them to the internals of the `Favourites` component. You are able to create all the functionality with only adding code inside the `compose` function. While you can build your own higher order components we recommend to use recompose's `renameProp`, `withState` & `withHandlers`
+You need fill build the `withLoading` component and then use it in the `compose` section of the `src/Planets.js` component. The goal is that a loading screen is shown until the data is successfully fetched.
 
-With `npm start` you can run the application, but it will fail with `TypeError: Cannot read property 'map' of undefined`.
+With `npm start` you can run the application, but it will fail with `TypeError: Cannot read property 'map' of null`.
 
 ## Testing
 
-To make it easier for you to complete this task, we've added tests verifying that you've arrived at the correct app. Initially they will fail with `TypeError: Cannot read property 'map' of undefined`. This command will run the tests:
+To make it easier for you to complete this task, we've added tests verifying that you've arrived at the correct app. Initially they will fail with `TypeError: Cannot read property 'map' of null`. This command will run the tests:
 
 ```sh
-npm run test
+npm test
 ```
 
 ## License
