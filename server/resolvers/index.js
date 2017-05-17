@@ -18,9 +18,14 @@ export default {
   },
   Query: {
     recipes: (_, args) => getRecipes(args),
-    ingredients: (_, args) => getIngredients(args)
+    ingredients: (_, args) => getIngredients(args),
   },
   Mutation: {
-    // TODO add mutations here
+    submitIngredient: (_, {name}) => {
+      return addIngredient(name)
+    },
+    submitRecipe: (_, {input}) => {
+      return addRecipe(input)
+    }
   }
 };

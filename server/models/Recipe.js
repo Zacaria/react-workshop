@@ -35,5 +35,6 @@ export const getRecipes = ({ vegetarian, ingredient }) => {
  * @returns {Promise<NewRecipe>}
  */
 export const addRecipe = input => {
+  console.log('loo', input);
   return recipeDb.insert(input);
 };

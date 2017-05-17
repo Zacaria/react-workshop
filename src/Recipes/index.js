@@ -30,6 +30,7 @@ const Recipes = ({
   setIngredientFilter
 }) => (
   <div>
+    {console.log(data)}
     <h3>Vegetarian Filter</h3>
     <div>
       <button
@@ -95,7 +96,7 @@ const enhance = compose(
       ingredientFilter
     })
   }),
-  withLoading
+  withLoading,
 );
 
 export default enhance(Recipes);

@@ -32,6 +32,7 @@
     "seed": "NODE_ENV=development babel-node server/models/seed.js --presets react-app",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test-watch": "react-scripts test --env=jsdom --watchAll"
   }
 }

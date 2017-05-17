@@ -1,8 +1,25 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
-import { compose, withState } from 'recompose';
+import { compose, withState, withHandlers } from 'recompose';
 import withLoading from '../withLoading';
+
+const RecipeMutation = gql `
+  mutation RecipeMutation ($input: RecipeInput!) {
+    submitRecipe(input: $input) {
+      _id
+      title
+    }
+  }
+`;
+
+const IngredientsQuery = gql`
+  query IngredientsQuery {
+    ingredients {
+      _id
+    }
+  }
+`;
 
 const AddRecipe = ({
   data,
@@ -91,6 +108,8 @@ const AddRecipe = ({
   </form>
 );
 
+const withMutation = graphql(RecipeMutation);
+
 const enhance = compose(
   withState('title', 'setTitle', ''),
   withState('vegetarian', 'setVegetarian', false),
@@ -98,6 +117,27 @@ const enhance = compose(
   withState('ingredientIds', 'setIngredientIds', []),
   withState('successMessage', 'setSuccessMessage', ''),
   // TODO add ingredients query and add recipe mutation here
+  withMutation,
+  withHandlers({
+    addRecipe: ({mutate, title, vegetarian, preparation, ingredientIds, ...props}) => event => {
+      event.preventDefault();
+      mutate({
+        variables: {
+          input: {
+            title,
+            vegetarian,
+            preparation,
+            ingredients: ingredientIds,
+          },
+        }
+      }).then(({data: {submitRecipe}}) => {
+        // console.log({data: {submitRecipe}});
+        props.setSuccessMessage(`Successfully added ${submitRecipe.title} with id ${submitRecipe._id}`);
+        props.setTitle('');
+      });
+    }
+  }),
+  graphql(IngredientsQuery),
   withLoading,
 );
 
