@@ -7,8 +7,9 @@ import Ingredient from './Ingredient';
 
 const Query = /* GraphQL */`
   type Query {
-    recipes(vegetarian: Boolean, ingredient: String): [Recipe!]
+    recipes(vegetarian: Boolean, ingredient: String): [Recipe!]!
     ingredients: [Ingredient!]
+    recipe(id: ID!): Recipe!
   }
 `;
 
@@ -16,6 +17,6 @@ const Schema = /* GraphQL */`
   schema {
     query: Query
   }
-`
+`;
 
 export default [Schema, Query, Recipe, Ingredient];

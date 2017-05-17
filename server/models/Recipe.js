@@ -37,3 +37,12 @@ export const getRecipes = ({ vegetarian, ingredient }) => {
 export const addRecipe = input => {
   return recipeDb.insert(input);
 };
+
+/**
+ * Get an recipe by its _id
+ *
+ * @param  {String} _id
+ *
+ * @returns {Promise<Recipe>}
+ */
+export const getRecipe = _id => recipeDb.findOne({ _id });
